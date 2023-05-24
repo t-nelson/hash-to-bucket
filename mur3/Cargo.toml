@@ -1,0 +1,31 @@
+[package]
+name = "mur3"
+version = "0.1.0"
+authors = ["The TiKV Project Developers"]
+edition = "2018"
+keywords = ["murmurhash3", "murmur3"]
+readme = "README.md"
+homepage = "https://github.com/tikv/mur3"
+documentation = "https://docs.rs/mur3"
+description = "The rust language implementation of MurmurHash3."
+categories = ["algorithms"]
+license = "MIT"
+
+[dependencies]
+
+[dev-dependencies]
+quickcheck = "1.0"
+quickcheck_macros = "1"
+mur3-c = { path = "mur3-c" }
+criterion = { version = "0.3", features = ["html_reports"] }
+rand = "0.8"
+
+[[bench]]
+name = "bench"
+harness = false
+
+[profile.bench]
+codegen-units = 1
+
+[workspace]
+members = ["mur3-c"]
